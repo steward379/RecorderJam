@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="oxxo.studio">
     <meta name="copyright" content="oxxo.studio">
     <title>JS Drum Kit</title>
@@ -13,41 +14,47 @@
 
 <body>
     <div class="keys">
-        <div data-key="65" class="key">
-            <kbd>A</kbd>
-            <span class="sound">掰揪</span>
+        <div class="line">
+            <div data-key="65" class="key" id="1" onclick="run(this, '11')">
+                <kbd>A</kbd>
+                <span class="sound">掰揪</span>
+            </div>
+            <div data-key="83" class="key" id="2" onclick="run(this, '22')">
+                <kbd>S</kbd>
+                <span class="sound">叫</span>
+            </div>
+            <div data-key="68" class="key" id="3" onclick="run(this, '33')">
+                <kbd>D</kbd>
+                <span class="sound">好ㄘ</span>
+            </div>
         </div>
-        <div data-key="83" class="key">
-            <kbd>S</kbd>
-            <span class="sound">叫</span>
+        <div class="line">
+            <div data-key="70" class="key" id="4" onclick="run(this, '44')">
+                <kbd>F</kbd>
+                <span class="sound">社</span>
+            </div>
+            <div data-key="71" class="key" id="5" onclick="run(this, '55')">
+                <kbd>G</kbd>
+                <span class="sound">別哭</span>
+            </div>
+            <div data-key="72" class="key" id="6" onclick="run(this, '66')">
+                <kbd>H</kbd>
+                <span class="sound">狂</span>
+            </div>
         </div>
-        <div data-key="68" class="key">
-            <kbd>D</kbd>
-            <span class="sound">好ㄘ</span>
-        </div>
-        <div data-key="70" class="key">
-            <kbd>F</kbd>
-            <span class="sound">社</span>
-        </div>
-        <div data-key="71" class="key">
-            <kbd>G</kbd>
-            <span class="sound">別哭</span>
-        </div>
-        <div data-key="72" class="key">
-            <kbd>H</kbd>
-            <span class="sound">狂</span>
-        </div>
-        <div data-key="74" class="key">
-            <kbd>J</kbd>
-            <span class="sound">哎</span>
-        </div>
-        <div data-key="75" class="key">
-            <kbd>K</kbd>
-            <span class="sound">快按這個</span>
-        </div>
-        <div data-key="76" class="key">
-            <kbd>L</kbd>
-            <span class="sound">時事</span>
+        <div class="line">
+            <div data-key="74" class="key" id="7" onclick="run(this, '77')">
+                <kbd>J</kbd>
+                <span class="sound">哎</span>
+            </div>
+            <div data-key="75" class="key" id="8" onclick="run(this, '88')">
+                <kbd>K</kbd>
+                <span class="sound">快按這個</span>
+            </div>
+            <div data-key="76" class="key">
+                <kbd>L</kbd>
+                <span class="sound">時事</span>
+            </div>
         </div>
     </div>
 
@@ -61,15 +68,15 @@
         <ul id="recordingslist"></ul>
     </div>
 
-    <audio data-key="65" src="sounds/a.wav"></audio>
-    <audio data-key="83" src="sounds/b.wav"></audio>
-    <audio data-key="68" src="sounds/c.wav"></audio>
-    <audio data-key="70" src="sounds/d.wav"></audio>
-    <audio data-key="71" src="sounds/e.wav"></audio>
-    <audio data-key="72" src="sounds/f.wav"></audio>
-    <audio data-key="74" src="sounds/g.wav"></audio>
-    <audio data-key="75" src="sounds/h.wav"></audio>
-    <audio data-key="76" src="sounds/i.wav"></audio>
+    <audio data-key="65" id="11" src="sounds/a.wav"></audio>
+    <audio data-key="83" id="22" src="sounds/b.wav"></audio>
+    <audio data-key="68" id="33" src="sounds/c.wav"></audio>
+    <audio data-key="70" id="44" src="sounds/d.wav"></audio>
+    <audio data-key="71" id="55" src="sounds/e.wav"></audio>
+    <audio data-key="72" id="66" src="sounds/f.wav"></audio>
+    <audio data-key="74" id="77" src="sounds/g.wav"></audio>
+    <audio data-key="75" id="88" src="sounds/h.wav"></audio>
+    <audio data-key="76" id="99" src="sounds/i.wav"></audio>
 
     <script>
         function removeTransition(e) {
@@ -81,12 +88,19 @@
             const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
             const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
             if (!audio) return;
-
             key.classList.add('playing');
             audio.currentTime = 0;
             audio.play();
             // key.classList.remove('playing');
             // key.classList.toggle('playing');
+        }
+
+        function run(e, music) {
+            var audio = document.querySelector(`audio[id="${music}"]`);
+            if (!audio) return;
+            e.classList.add('playing')
+            audio.currentTime = 0;
+            audio.play();
         }
 
         const keys = Array.from(document.querySelectorAll('.key'));
