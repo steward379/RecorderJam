@@ -103,11 +103,13 @@
             audio.play();
         }
 
-        const keys = Array.from(document.querySelectorAll('.key'));
-        keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-        // keys.forEach(function(key) {
-        //     return key.addEventListener('transitionend', removeTransition);
-        // });
+        // const keys = Array.from(document.querySelectorAll('.key'));
+        var keys = Array.from(document.querySelectorAll('.key'));
+
+        // keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+        keys.forEach(function(key) {
+            return key.addEventListener('transitionend', removeTransition);
+        });
         window.addEventListener('keydown', playSound);
 
         //recorder.js
