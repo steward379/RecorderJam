@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="oxxo.studio">
-    <meta name="copyright" content="oxxo.studio">
-    <title>JS Drum Kit</title>
+    <meta name="recorderjs-author" content="Copyright © 2013 Matt Diamond</p>">
+    <meta name="copyright" content="Matt Diamond & oxxo.studio">
+    <title>Jam Kit</title>
     <link rel="stylesheet" href="style.css">
     <script src="Recorderjs/dist/recorder.js"></script>
     <script src="Recorderjs/lib/recorder.js"></script>
 </head>
 
 <body>
-    <div class="keys">
+    <div class="jams">
         <div class="line">
             <div data-key="65" class="key" id="1" onclick="run(this, '11')">
                 <kbd>A</kbd>
@@ -110,19 +110,13 @@
         // });
         window.addEventListener('keydown', playSound);
 
-        //recorderjs
+        //recorder.js
 
         window.onload = function() {
             window.AudioContext = window.AudioContext || window.webkitAudioContext;
             navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
             window.URL = window.URL || window.webkitURL;
             var recorder;
-
-            // var d = document.getElementById('d');
-            // for (var i = 0; i < 256; i++) {
-            //     d.innerHTML += '<div></div>';
-            // }
-            // var dd = document.querySelectorAll('#d div');
 
             var play = document.getElementById('play');
             var pause = document.getElementById('pause');
@@ -161,10 +155,6 @@
                 function update() {
                     console.log(dataArray);
                     analyser.getByteFrequencyData(dataArray);
-                    // for (var j = 0; j < 256; j++) {
-                    //     dd[j].style.hieght = dataArray[j] + 'px';
-                    //     dd[j].style.background = 'rgba(' + (255 - j) + ',' + j * 2 + ',0,1)';
-                    // }
                     timer = setTimeout(update, 20);
                 }
 

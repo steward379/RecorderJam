@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Barrio');
 html {
-    font-size: 10px;
+    font-size: 12px;
     /*background: url(http://i.imgur.com/b9r5sEL.jpg) bottom center;*/
     /*background-size: cover;*/
 }
@@ -8,16 +9,16 @@ body,
 html {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Barrio', sans-serif;
     display: flex;
     flex-direction: column;
-    flex: 1;
     min-height: 0;
+    flex: 1;
     justify-content: center;
     align-items: center;
 }
 
-.keys {
+.jams {
     display: flex;
     min-height: 30vh;
     align-items: center;
@@ -31,35 +32,37 @@ html {
 }
 
 .key {
-    border: .4rem solid black;
-    border-radius: .5rem;
-    margin: 1rem;
     font-size: 1.5rem;
+    height: 9rem;
+    border: .2rem solid #f75611;
+    border-radius: 100%;
+    color: #f75611;
+    margin: 1rem;
     padding: 1rem .5rem;
-    transition: all .07s ease;
+    transition: all .4s ease-in;
     width: 10rem;
     text-align: center;
-    color: white;
-    background: rgba(0, 0, 0, 0.4);
-    text-shadow: 0 0 .5rem black;
 }
 
 .playing {
     transform: scale(1.1);
-    border-color: #ffc600;
-    box-shadow: 0 0 1rem #ffc600;
+    background-color: #f75611;
+    color: white;
+    border: .1rem;
+    border-color: white;
+    box-shadow: 0 0 2rem black;
 }
 
 kbd {
     display: block;
-    font-size: 4rem;
+    font-size: 5rem;
+    font-family: 'Barrio';
 }
 
 .sound {
     font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: .1rem;
-    color: #ffc600;
+    letter-spacing: .3rem;
+    color: #f75611;
 }
 
 ul {
@@ -72,7 +75,7 @@ ul {
 }
 
 @media screen and (max-width: 500px) {
-    .keys {
+    .jams {
         display: flex;
         flex-direction: column;
     }
